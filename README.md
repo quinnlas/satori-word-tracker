@@ -2,7 +2,7 @@
 This Chrome extension allows you to track what words you know in Satori Reader and it will only show furigana for words you don't know.
 
 # Instructions
-1. Install the extension.
+1. [Install the extension](https://developer.chrome.com/docs/extensions/get-started/tutorial/hello-world#load-unpacked).
 2. In Satori Reader, set Furigana display to `According to my knowledge`
 3. Mark words as known by clicking on them, then clicking the `Add to Known Words` button.
 4. Remove words from your list if needed with the `Remove from Known Words` button.
