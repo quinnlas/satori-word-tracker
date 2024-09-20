@@ -1,0 +1,20 @@
+{
+  "manifest_version": 3,
+  "name": "Satori Word Tracker",
+  "version": "0.1.0",
+  "description": "Track the words you know to configure furigana and estimate difficulty in Satori Reader.",
+  "icons": {},
+  "content_scripts": [
+    {
+      "js": [
+        "satori-word-tracker.js"
+      ],
+      "matches": [
+        "https://www.satorireader.com/articles/*"
+      ]
+    }
+  ],
+  "permissions": [
+    "storage"
+  ]
+}
