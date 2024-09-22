@@ -10,8 +10,8 @@ async function loadStorage() {
 
 // DISPLAY ------------
 function getWordText(word) {
-  return Array.from(word.getElementsByClassName("wpr"))
-    .map((wpr) => wpr.textContent)
+  return Array.from(word.getElementsByClassName("wpt"))
+    .map((wpt) => wpt.textContent)
     .join("")
 }
 
