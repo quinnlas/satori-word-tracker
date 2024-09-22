@@ -47,7 +47,7 @@ function calcPercent() {
   }
 
   const displayPercent = Math.round(1000 * known / total) / 10
-  const displayString = `${displayPercent}%`
+  const displayString = total === 0 ? '-%' : `${displayPercent}%`
   document.getElementsByClassName("word-tracker-percent")[0].textContent = displayString
 }
 
