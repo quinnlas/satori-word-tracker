@@ -9,7 +9,7 @@ Satori Reader uses html like this for words that can have furigana:
   <span class="wpr">ご</span>
 </span>
 ```
-- wp = word parsed?
+- wp = word part
 - hf = has furigana
 - fg = furigana
 - wpt = word (wp text)

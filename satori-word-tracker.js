@@ -7,10 +7,16 @@ async function loadStorage() {
   knownWords = storedKnownWords.knownWords
 }
 
+function getWordText(word) {
+  return Array.from(word.getElementsByClassName("wpr"))
+    .map((wpr) => wpr.textContent)
+    .join("")
+}
+
 function setKanjiClasses() {
-  for (let wp of document.getElementsByClassName("wp hf")) {
-    // clear existing kanji knowledge classes from the parent element
-    wp.parentElement.classList.remove(
+  for (let word of document.getElementsByClassName("word")) {
+    // clear existing kanji knowledge classes from the word element
+    word.classList.remove(
       "kanji-knowledge-all",
       "kanji-knowledge-some",
       "kanji-knowledge-none",
@@ -18,32 +24,37 @@ function setKanjiClasses() {
     )
 
     // determine whether it's known and update
-    const wordText = wp.children[1].textContent
+    const wordText = getWordText(word)
 
     if (knownWords[wordText]) {
-      wp.parentElement.classList.add("kanji-knowledge-all")
+      word.classList.add("kanji-knowledge-all")
     } else {
-      wp.parentElement.classList.add("kanji-knowledge-none")
+      word.classList.add("kanji-knowledge-none")
     }
   }
+}
+
+function getSelectedWordText() {
+  const selectedWord = document.getElementsByClassName("word-selected")[0]
+  return getWordText(selectedWord)
 }
 
 function setupWordManagementButtons() {
   const tooltipElem = document.getElementsByClassName("tooltip")[0]
 
   async function markWordAsKnown() {
-    const word = document.querySelector(".tooltip .wpt").textContent
+    const wordText = getSelectedWordText()
 
-    knownWords[word] = true
+    knownWords[wordText] = true
     await chrome.storage.sync.set({ knownWords })
 
     setKanjiClasses()
   }
 
   async function markWordAsUnknown() {
-    const word = document.querySelector(".tooltip .wpt").textContent
+    const wordText = getSelectedWordText()
 
-    delete knownWords[word]
+    delete knownWords[wordText]
     await chrome.storage.sync.set({ knownWords })
 
     setKanjiClasses()
