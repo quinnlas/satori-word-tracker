@@ -9,6 +9,9 @@
       "js": [
         "satori-word-tracker.js"
       ],
+      "css": [
+        "satori-word-tracker.css"
+      ],
       "matches": [
         "https://www.satorireader.com/articles/*"
       ]

@@ -1,0 +1,9 @@
+/* highlight unknown words */
+.kanji-knowledge-none .wpt {
+  background-color: #666;
+}
+
+.word-tracker-percent {
+  margin-right: .5em;
+  color:bisque
+}
