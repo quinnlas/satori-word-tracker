@@ -12,6 +12,12 @@ This Chrome extension allows you to track what words you know in Satori Reader.
 
 # TODO
 
+## Show total word count
+Seeing the total word count on screen at all times would be a nice feature.
+
+## Mark as Known Keyboard Shortcut
+Having a keyboard shortcut to (when the tooltip is open) mark the word as known and close the tooltip would be really nice.
+
 ## Smart Button Display
 Right now, the extension shows the buttons to both add and remove the word in the tooltip. It is better to show the appropriate button based on whether the word is known.
 
