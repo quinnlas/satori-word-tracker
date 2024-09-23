@@ -69,6 +69,8 @@ function setupWordManagementButtons() {
   async function markWordAsKnown() {
     const wordText = getSelectedWordText()
 
+    // refresh local cache of storage in case it was edited on another page
+    await loadStorage()
     knownWords[wordText] = true
     await chrome.storage.sync.set({ knownWords })
 
@@ -78,6 +80,8 @@ function setupWordManagementButtons() {
   async function markWordAsUnknown() {
     const wordText = getSelectedWordText()
 
+    // refresh local cache of storage in case it was edited on another page
+    await loadStorage()
     delete knownWords[wordText]
     await chrome.storage.sync.set({ knownWords })
 
