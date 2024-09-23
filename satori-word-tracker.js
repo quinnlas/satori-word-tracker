@@ -39,7 +39,14 @@ function setWordClasses() {
 function calcPercent() {
   let known = 0
   let total = 0
+
+  const tooltipWord = document.querySelector(".tooltip .word")
   for (let word of document.getElementsByClassName("word")) {
+    // the tooltip word does not exist when the article loads
+    // and also changes based on what is clicked
+    // so we want to ignore it if it's there
+    if (word === tooltipWord) continue
+
     const wordText = getWordText(word)
 
     if (knownWords[wordText]) known++
