@@ -4,7 +4,7 @@ console.log("LOADED content script for Satori Word Tracker")
 let knownWords
 
 async function loadStorage() {
-  const storedKnownWords = await chrome.storage.sync.get({ knownWords: {} })
+  const storedKnownWords = await chrome.storage.local.get({ knownWords: {} })
   knownWords = storedKnownWords.knownWords
 }
 
@@ -82,8 +82,8 @@ function setupWordManagementButtons() {
 
     // refresh local cache of storage in case it was edited on another page
     await loadStorage()
-    knownWords[wordText] = true
-    await chrome.storage.sync.set({ knownWords })
+    knownWords[wordText] = 1
+    await chrome.storage.local.set({ knownWords })
 
     refreshDisplay()
   }
@@ -94,7 +94,7 @@ function setupWordManagementButtons() {
     // refresh local cache of storage in case it was edited on another page
     await loadStorage()
     delete knownWords[wordText]
-    await chrome.storage.sync.set({ knownWords })
+    await chrome.storage.local.set({ knownWords })
 
     refreshDisplay()
   }

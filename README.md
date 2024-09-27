@@ -20,3 +20,6 @@ Right now, the extension shows the buttons to both add and remove the word in th
 
 ## Button Display Styling
 The buttons should be styled properly and injected into the correct place in the HTML.
+
+## Word Export/Import
+A nice feature in general, but especially useful given that words are stored locally.
