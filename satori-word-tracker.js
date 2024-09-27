@@ -53,9 +53,20 @@ function calcPercent() {
     total++
   }
 
-  const displayPercent = Math.round(1000 * known / total) / 10
-  const displayString = total === 0 ? '-%' : `${displayPercent}%`
-  document.getElementsByClassName("word-tracker-percent")[0].textContent = displayString
+  const displayPercent = Math.round((1000 * known) / total) / 10
+  const displayString = total === 0 ? "-%" : `${displayPercent}%`
+  document.getElementsByClassName("word-tracker-percent")[0].textContent =
+    displayString
+}
+
+function calcWordCount() {
+  const wordCount = Object.keys(knownWords).length
+
+  for (let element of document.getElementsByClassName(
+    "word-tracker-word-count"
+  )) {
+    element.textContent = wordCount
+  }
 }
 
 function getSelectedWordText() {
@@ -109,14 +120,42 @@ function setupPercentDisplay() {
   document.getElementsByClassName("article-title")[0].prepend(element)
 }
 
+function setupWordCountDisplay() {
+  // insert to the left of the audio slider
+  // there are actually 2 of these depending on screen resolution
+
+  const small = document.createElement("span")
+  small.classList.add(
+    "word-tracker-word-count",
+    "word-tracker-word-count-small"
+  )
+  small.textContent = "..."
+
+  const large = document.createElement("span")
+  large.classList.add(
+    "word-tracker-word-count",
+    "word-tracker-word-count-large"
+  )
+  large.textContent = "..."
+
+  document
+    .querySelector("#audio-controls-mobile .primary-controls")
+    .prepend(small)
+  document
+    .querySelector("#audio-controls-large .primary-controls")
+    .prepend(large)
+}
+
 function refreshDisplay() {
   setWordClasses()
   calcPercent()
+  calcWordCount()
 }
 
 function startDisplay() {
   setupWordManagementButtons()
   setupPercentDisplay()
+  setupWordCountDisplay()
   refreshDisplay()
 }
 

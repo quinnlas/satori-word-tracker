@@ -5,5 +5,9 @@
 
 .word-tracker-percent {
   margin-right: .5em;
-  color:bisque
+  color: bisque
+}
+
+.word-tracker-word-count-large {
+  padding-left: 1rem;
 }
